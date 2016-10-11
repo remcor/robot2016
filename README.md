@@ -14,6 +14,8 @@ Buttons mapping:
 *	Btn6D - Lower Arm
 *	Btn8D - Open Hand
 *	Btn8U - Closes Hand
+* Btn7D - Close Seeder
+*	Btn7U - Open Seeder
 
 ## Brain
 Motor Mapping:
@@ -23,5 +25,6 @@ Motor Mapping:
 * port9 - Arm Up and down
 
 Servo Mapping:
+* port2 - Seeder Open / Close
 * port5 - Left side of hand
 * port7 - Right side of hand
