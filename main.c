@@ -1,6 +1,6 @@
 #pragma config(Motor, port2, seeder, tmotorServoStandard, openLoop)
-#pragma config(Motor, port3, leftWheel, tmotorVex393_MC29, openLoop)
-#pragma config(Motor, port4, rightWheel, tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor, port3, leftWheel, tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor, port4, rightWheel, tmotorVex393_MC29, openLoop)
 #pragma config(Motor, port5, handLeft, tmotorServoStandard, openLoop)
 #pragma config(Motor, port7, handRight, tmotorServoStandard, openLoop)
 #pragma config(Motor, port8, handMotor, tmotorVex393_MC29, openLoop)
