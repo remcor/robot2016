@@ -2,6 +2,7 @@
 
 Tank style controls.  Arm that raises and lowers.  Hand that rotates, and opens and closes
 
+## Controller / Remote
 Joystick mapping:
 *	Ch3 - Left Joystick up/down
 *	Ch2 - Right Joystick up/down
@@ -14,6 +15,7 @@ Buttons mapping:
 *	Btn8D - Open Hand
 *	Btn8U - Closes Hand
 
+## Brain
 Motor Mapping:
 * port3 - Left Wheel
 * port4 - Right Wheel
