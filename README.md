@@ -16,7 +16,7 @@ Buttons mapping:
 
 Motor Mapping:
 * port3 - Left Wheel
-* port3 - Right Wheel
+* port4 - Right Wheel
 * port8 - Hand Rotate
 * port9 - Arm Up and down
 
