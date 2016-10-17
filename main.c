@@ -23,80 +23,110 @@ Buttons mapping:
 
 task main ()
 {
+	// Define the min and max a servo can rotate
 	int maxServoPos = 127;
 	int maxServoNeg = -127;
+	
+	// Amount to increment servo rotation
 	int servoIncrement = 10;
 
+	// Joystick threshold
 	int threshold = 10;
 
+	// Main loop
 	while (true) {
 
-		// If greater then threshold set, otherwise set to 0
+		/*
+			To prevent the left and right wheel motors from humming we set a threshold.
+			The joysticks are never true 0.
+			So we make sure the joystick has moved more then a threshold.
+			This ensures it was intentional.
+		*/
+    
+		// If left joystick is moved greater then threshold.
 		if (vexRT[Ch3] > threshold || vexRT[Ch3] < -threshold) {
-			motor[leftWheel] = vexRT[Ch3];   // Left Joystick Y value
+			// Left Joystick Y value
+			motor[leftWheel] = vexRT[Ch3]; 
 		} else {
-			motor[leftWheel] = 0;
+			// Joystick isnt moving so make sure motor isn't moving.
+			motor[leftWheel] = 0; 
 		}
 
-		// If greater then threshold set, otherwise set to 0
+		// If right joystick is moved greater then threshold.
 		if (vexRT[Ch2] > threshold || vexRT[Ch2] < -threshold) {
-			motor[rightWheel] = vexRT[Ch2];   // Right Joystick Y value
+			// Right Joystick Y value
+			motor[rightWheel] = vexRT[Ch2]; 
 		} else {
-			motor[rightWheel] = 0;
+			// Joystick isnt moving so make sure motor isnt moving.
+			motor[rightWheel] = 0; 
 		}
 
-		// Open seeder
+		// Check if Button 7D is pressed to open seeder.
 		if (vexRT[Btn7D] == 1) {
-
+			// Make sure the servo isnt at the max position already.
 			if (motor[seeder] < maxServoPos) {
-				motor[seeder] = motor[seeder] + servoIncrement;
+				// Take current servo postition and increment by servo Increment
+				motor[seeder] = motor[seeder] + servoIncrement; 
 			}
 		}
 
-		// Close seeder
+		// Check if Button 7U is pressed to close seeder.
 		if (vexRT[Btn7U] == 1) {
-
+  			// Make sure the servo isnt at the min position already.
 			if (motor[seeder] > maxServoNeg ) {
-				motor[seeder] = motor[seeder] - servoIncrement;
+				// Take current servo postition and decrease by servo Increment
+				motor[seeder] = motor[seeder] - servoIncrement; 
 			}
 		}
 		
-		// Open hand
+			// Check if Button 8D is pressed to open hand.
 		if (vexRT[Btn8D] == 1) {
-
+			// Make sure the servo isnt at the max position already. 
 			if (motor[handLeft] < maxServoPos) {
-				motor[handLeft] = motor[handLeft] + servoIncrement;
-				motor[handRight] = motor[handRight] - servoIncrement;
+				// Increment left side of hand
+				motor[handLeft] = motor[handLeft] + servoIncrement; 
+				// Decrease right side of hand
+				motor[handRight] = motor[handRight] - servoIncrement; 
 			}
 		}
 
-		// Close Hand
+		// Check if Button 8U is pressed to close hand.
 		if (vexRT[Btn8U] == 1) {
-
+  			// Make sure the servo isnt at the min position already.
 			if (motor[handLeft] > maxServoNeg ) {
-				motor[handLeft] = motor[handLeft] - servoIncrement;
-				motor[handRight] = motor[handRight] + servoIncrement;
+				// Decrease left side of hand
+				motor[handLeft] = motor[handLeft] - servoIncrement; 
+				// Increase right side of hand
+				motor[handRight] = motor[handRight] + servoIncrement; 
 			}
 		}
 
-		// Button 5D raises arm
+		// Check if Button 5D is pressed to raise arm.
 		if (vexRT[Btn5D] == 1) {
-			motor[armMotor] = 100;
+			// Rotate motor to raise arm
+			motor[armMotor] = 100; 
+			
+		// Check if Button 6D is pressed to lower arm.
 		} else if (vexRT[Btn6D] == 1) {
-			motor[armMotor] = -100;
+			// Provide a negative value which rotates the motor the opposite direction and lowers the arm.
+			motor[armMotor] = -100; 
 		} else {
-			motor[armMotor] = 0;
+			// Stop motor
+			motor[armMotor] = 0; 
 		}
 
-		// Button 5U rotates hand left
+		// Check if Button 5U is pressed to rotate hand left
 		if (vexRT[Btn5U] == 1) {
-			motor[handMotor] = 100;
+			// Rotate motor to rotate hand
+			motor[handMotor] = 100; 
+			
+		// Check if Button 6U is pressed to rotate hand right
 		} else if (vexRT[Btn6U] == 1) {
-			motor[handMotor] = -100;
+			// Provide a negative value which rotates the motor the opposite direction and rotates the hand right
+			motor[handMotor] = -100; 
 		} else {
-			motor[handMotor] = 0;
+			// Stop motor
+			motor[handMotor] = 0; 
 		}
-
 	}
-
 }
